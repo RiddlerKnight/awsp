@@ -247,11 +247,15 @@ fn display<T: ToString>(display_prompt: String, list: &[T], default: usize) -> u
 }
 
 fn select_profile(profile: &str) {
-    env::set_var(AWS_DEFAULT_PROFILE, profile);
+    unsafe {
+        env::set_var(AWS_DEFAULT_PROFILE, profile);
+    }
 }
 
 fn select_region(region: &str) {
-    env::set_var(AWS_DEFAULT_REGION, region);
+    unsafe {
+        env::set_var(AWS_DEFAULT_REGION, region);
+    }
 }
 
 // TODO manage stack process when run awsp multiple
